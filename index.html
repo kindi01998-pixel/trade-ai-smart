@@ -8,115 +8,48 @@
 <style>
 *{box-sizing:border-box}
 body{
-  margin:0;
-  background:#090b10;
-  color:#f5f7fb;
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+  margin:0;background:#090b10;color:#f5f7fb;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif
 }
-main{
-  max-width:720px;
-  margin:auto;
-  padding:28px 18px 60px;
-}
-h1{
-  font-size:32px;
-  margin:10px 0;
-}
-.sub{
-  color:#9ca3af;
-  line-height:1.8;
-  margin-bottom:25px;
-}
+main{max-width:720px;margin:auto;padding:28px 18px 60px}
+h1{font-size:30px;margin:10px 0}
+.sub{color:#9ca3af;line-height:1.8;margin-bottom:25px}
 .card{
-  background:#12151d;
-  border:1px solid #29303d;
-  border-radius:22px;
-  padding:20px;
-  margin-bottom:18px;
+  background:#12151d;border:1px solid #29303d;
+  border-radius:22px;padding:20px;margin-bottom:18px
 }
 .upload{
-  display:block;
-  border:2px dashed #394253;
-  border-radius:18px;
-  padding:32px 15px;
-  text-align:center;
-  cursor:pointer;
+  display:block;border:2px dashed #394253;border-radius:18px;
+  padding:32px 15px;text-align:center;cursor:pointer
 }
-.upload strong{
-  display:block;
-  font-size:18px;
-  margin-bottom:8px;
-}
-.upload span{color:#9ca3af}
+.upload strong{display:block;font-size:18px;margin-bottom:8px}
+.upload span,.small{color:#9ca3af}
 input[type=file]{display:none}
-
 .preview{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:10px;
-  margin-top:15px;
+  display:grid;grid-template-columns:repeat(2,1fr);
+  gap:10px;margin-top:15px
 }
 .preview img{
-  width:100%;
-  height:150px;
-  object-fit:cover;
-  border-radius:12px;
-  border:1px solid #333b49;
+  width:100%;height:150px;object-fit:cover;
+  border-radius:12px;border:1px solid #333b49
 }
-
-label{
-  display:block;
-  color:#b6bdc9;
-  margin:18px 0 8px;
-}
+label{display:block;color:#b6bdc9;margin:18px 0 8px}
 input,select,textarea{
-  width:100%;
-  background:#0d1016;
-  border:1px solid #343c4a;
-  border-radius:14px;
-  padding:15px;
-  color:white;
-  font-size:16px;
+  width:100%;background:#0d1016;border:1px solid #343c4a;
+  border-radius:14px;padding:15px;color:white;font-size:16px
 }
-textarea{
-  min-height:100px;
-  resize:vertical;
-}
-.row{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:12px;
-}
+textarea{min-height:100px;resize:vertical}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 button{
-  width:100%;
-  margin-top:22px;
-  padding:17px;
-  border:0;
-  border-radius:15px;
-  background:#637eea;
-  color:white;
-  font-size:18px;
-  font-weight:700;
+  width:100%;margin-top:22px;padding:17px;border:0;
+  border-radius:15px;background:#637eea;color:white;
+  font-size:18px;font-weight:700
 }
-button:disabled{
-  opacity:.5;
-}
-.result{
-  display:none;
-}
-.status{
-  font-size:22px;
-  font-weight:700;
-  margin-bottom:12px;
-}
-.warning{
-  color:#fbbf24;
-}
-.small{
-  color:#9ca3af;
-  font-size:14px;
-  line-height:1.6;
-}
+button:disabled{opacity:.5}
+.result{display:none}
+.status{font-size:22px;font-weight:700;margin-bottom:12px}
+.warning{color:#fbbf24}
+#resultText{white-space:pre-wrap;line-height:1.8}
 </style>
 </head>
 
@@ -126,15 +59,15 @@ button:disabled{
 <h1>فحص الصفقة بالذكاء الاصطناعي</h1>
 
 <div class="sub">
-ارفع صور الشارت D1 / H4 / H1 / M15 / M5، وحدد رأس المال والمخاطرة.
-سنجهز التحليل ليشمل الاتجاه، السيولة، BOS/CHOCH، FVG و Order Blocks.
+ارفع صور الشارت D1 / H4 / H1 / M15 / M5.
+سيتم فحص الاتجاه والسيولة و BOS/CHOCH و FVG و Order Blocks.
 </div>
 
 <section class="card">
 
 <label class="upload" for="shots">
 <strong>📸 اضغط لاختيار صور الشارت</strong>
-<span>يمكنك اختيار أكثر من صورة من iPhone</span>
+<span>يمكنك اختيار أكثر من صورة</span>
 </label>
 
 <input id="shots" type="file" accept="image/*" multiple>
@@ -171,19 +104,19 @@ button:disabled{
 </select>
 
 <label>ملاحظاتك / فكرتك</label>
-<textarea id="notes" placeholder="مثلاً: أفكر بيع بعد سحب سيولة فوق القمة + CHOCH"></textarea>
+<textarea id="notes"
+placeholder="مثلاً: أفكر بيع بعد سحب سيولة فوق القمة + CHOCH"></textarea>
 
 <button id="analyze">فحص الصفقة 🤖</button>
 
 </section>
 
 <section class="card result" id="result">
-<div class="status">تحضير التحليل...</div>
-
-<p id="resultText"></p>
+<div class="status" id="status">تحليل الشارت...</div>
+<div id="resultText"></div>
 
 <p class="warning">
-⚠️ هذه الأداة للمساعدة في التحليل وإدارة المخاطر وليست ضماناً للربح.
+⚠️ التحليل للمساعدة فقط وليس ضماناً للربح.
 </p>
 </section>
 
@@ -196,11 +129,10 @@ const count = document.getElementById("count");
 const analyze = document.getElementById("analyze");
 const result = document.getElementById("result");
 const resultText = document.getElementById("resultText");
+const statusText = document.getElementById("status");
 
 shots.addEventListener("change", () => {
-
   preview.innerHTML = "";
-
   const files = [...shots.files];
 
   count.textContent = files.length
@@ -214,8 +146,16 @@ shots.addEventListener("change", () => {
   });
 });
 
-analyze.addEventListener("click", () => {
+function fileToDataURL(file){
+  return new Promise((resolve,reject)=>{
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
 
+analyze.addEventListener("click", async () => {
   const files = [...shots.files];
 
   if(!files.length){
@@ -223,21 +163,49 @@ analyze.addEventListener("click", () => {
     return;
   }
 
-  const balance = document.getElementById("balance").value;
-  const risk = document.getElementById("risk").value;
-  const symbol = document.getElementById("symbol").value;
-  const timeframe = document.getElementById("timeframe").value;
+  analyze.disabled = true;
+  analyze.textContent = "جاري التحليل...";
 
   result.style.display = "block";
+  statusText.textContent = "🤖 الذكاء الاصطناعي يحلل الصور...";
+  resultText.textContent = "";
 
-  resultText.innerHTML =
-  `تم استلام <b>${files.length}</b> صورة.<br><br>
-   الزوج: <b>${symbol}</b><br>
-   الفريم: <b>${timeframe}</b><br>
-   الحساب: <b>$${balance}</b><br>
-   المخاطرة: <b>${risk}%</b><br><br>
-   واجهة التطبيق أصبحت جاهزة. الخطوة التالية هي ربط الصور بمحرك AI ليحلل الشارت فعلياً.`;
+  try{
+    const images = await Promise.all(
+      files.map(file => fileToDataURL(file))
+    );
 
+    const response = await fetch("/api/analyze",{
+      method:"POST",
+      headers:{
+        "Content-Type":"application/json"
+      },
+      body:JSON.stringify({
+        images,
+        symbol:document.getElementById("symbol").value,
+        timeframe:document.getElementById("timeframe").value,
+        balance:document.getElementById("balance").value,
+        risk:document.getElementById("risk").value,
+        notes:document.getElementById("notes").value
+      })
+    });
+
+    const data = await response.json();
+
+    if(!response.ok){
+      throw new Error(data.error || "فشل التحليل");
+    }
+
+    statusText.textContent = "📊 نتيجة التحليل";
+    resultText.textContent = data.analysis || "لم تصل نتيجة.";
+
+  }catch(error){
+    statusText.textContent = "❌ حدث خطأ";
+    resultText.textContent = error.message;
+  }
+
+  analyze.disabled = false;
+  analyze.textContent = "فحص الصفقة 🤖";
   result.scrollIntoView({behavior:"smooth"});
 });
 </script>
